@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <title>Serani</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
+            rel="stylesheet">
+
+        <meta name="description"
+            content="Infraestrutura de TI, segurança da informação e suporte técnico para empresas de pequeno e médio porte que precisam de estabilidade e segurança.">
+
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
+        <script
+            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+        <!-- EmailJS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+        <script>
+    (function () {
+      emailjs.init("BYiiAzi8w4LJN_HDb");
+    })();
+  </script>
+    </head>
+
+    <body class="bg-black text-white">
+
+        <!-- NAVBAR -->
+        <div
+            class="navbar fixed top-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
+            <div class="navbar-start">
+                <a href="#" class="font-brand text-xl font-extrabold">Serani</a>
+            </div>
+
+            <div class="navbar-center hidden lg:flex">
+                <ul class="menu menu-horizontal gap-6 text-white/80">
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+
+            <div class="navbar-end">
+                <a href="#contato" class="btn btn-info btn-sm">
+                    Fale com um especialista
+                </a>
+            </div>
+        </div>
+
+        <!-- BACKGROUND -->
+        <div
+            class="relative overflow-hidden bg-gradient-to-br from-[#050b1e] via-[#0a1233] to-[#1a1f4a]">
+
+            <!-- GLOWS -->
+            <div
+                class="absolute -top-40 -left-40 w-[700px] h-[700px] bg-[#4c3cff]/20 rounded-full blur-3xl glow-float"></div>
+            <div
+                class="absolute top-1/3 -right-40 w-[600px] h-[600px] bg-blue-900/30 rounded-full blur-3xl glow-float delay-2"></div>
+            <div
+                class="absolute bottom-0 left-1/4 w-[800px] h-[400px] bg-black/40 rounded-full blur-3xl glow-float delay-3"></div>
+
+            <div class="absolute inset-0 bg-black/30 backdrop-blur-md"></div>
+
+            <div class="relative z-10">
+
+                <!-- HERO -->
+                <section
+                    class="min-h-screen flex items-center justify-center text-center px-6">
+                    <div class="max-w-xl fade-up">
+                        <h1
+                            class="font-brand text-7xl md:text-8xl font-black tracking-tight">
+                            Serani
+                        </h1>
+
+                        <p class="text-lg text-white/80 mb-8">
+                            Tecnologia da informação para empresas de pequeno e
+                            médio porte que
+                            precisam de estabilidade, segurança e continuidade
+                            operacional.
+                        </p>
+                        <div class="flex gap-4 justify-center">
+                            <a href="#contato" class="btn btn-info btn-lg">
+                                Solicitar contato
+                            </a>
+                            <a href="#servicos"
+                                class="btn btn-outline btn-lg text-white border-white/30 hover:bg-white/10">
+                                Ver serviços
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SERVIÇOS -->
+                <section id="servicos" class="py-32">
+                    <div class="max-w-6xl mx-auto px-6">
+                        <h2 class="text-4xl font-bold text-center mb-16">
+                            Soluções em tecnologia da informação para pequenas e
+                            médias empresas
+                        </h2>
+
+                        <div class="grid md:grid-cols-3 gap-8">
+                            <div
+                                class="card bg-white/5 backdrop-blur-lg border border-white/10 fade-up">
+                                <div class="card-body">
+                                    <h3 class="card-title">Infraestrutura</h3>
+                                    <p class="text-white/70">
+                                        Redes, servidores e cloud estruturados
+                                        para garantir
+                                        desempenho, disponibilidade e
+                                        crescimento seguro.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="card bg-white/5 backdrop-blur-lg border border-white/10 fade-up delay-1">
+                                <div class="card-body">
+                                    <h3 class="card-title">Segurança da
+                                        Informação</h3>
+                                    <p class="text-white/70">
+                                        Proteção contra ataques, vazamento de
+                                        dados, ransomware,
+                                        backups e conformidade com a LGPD.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div
+                                class="card bg-white/5 backdrop-blur-lg border border-white/10 fade-up delay-2">
+                                <div class="card-body">
+                                    <h3 class="card-title">Suporte Técnico</h3>
+                                    <p class="text-white/70">
+                                        Suporte técnico contínuo para pequenas e
+                                        médias empresas,
+                                        com atendimento rápido, claro e sem
+                                        burocracia.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- DIFERENCIAIS -->
+                <section class="py-32">
+                    <div
+                        class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+                        <div class="fade-up">
+                            <h2 class="text-4xl font-bold mb-6">
+                                Tecnologia da informação pensada para pequenas e
+                                médias empresas
+                            </h2>
+                            <ul class="space-y-4 text-white/80">
+                                <li>Ambientes estáveis e monitorados</li>
+                                <li>Segurança aplicada desde o início</li>
+                                <li>Soluções escaláveis conforme o
+                                    crescimento</li>
+                                <li>Relacionamento próximo e transparente</li>
+                            </ul>
+                        </div>
+
+                        <div class="relative fade-up delay-2">
+                            <div
+                                class="absolute inset-0 bg-[#4c3cff]/20 blur-3xl rounded-full"></div>
+                            <div
+                                class="relative card bg-white/5 backdrop-blur-lg border border-white/10">
+                                <div class="card-body">
+                                    <h3 class="text-xl font-semibold">
+                                        Tecnologia que sustenta o seu negócio
+                                    </h3>
+                                    <p class="text-white/70">
+                                        Cuidamos da tecnologia para que pequenas
+                                        e médias empresas
+                                        possam crescer com segurança,
+                                        previsibilidade e controle.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SOBRE -->
+                <section id="sobre" class="py-32">
+                    <div class="max-w-4xl mx-auto px-6 text-center fade-up">
+                        <h2 class="text-4xl font-bold mb-6">Sobre a Serani</h2>
+                        <p class="text-white/70 leading-relaxed">
+                            A Serani atende empresas de pequeno e médio porte
+                            que não podem parar.
+                            Nosso foco é entregar infraestrutura de tecnologia
+                            da informação estável, segurança da
+                            informação e suporte técnico confiável, sem
+                            improviso e sem soluções
+                            genéricas.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- CONTATO -->
+                <section id="contato" class="py-32">
+                    <div class="max-w-xl mx-auto px-6 fade-up">
+                        <h2 class="text-4xl font-bold text-center mb-4">
+                            Vamos falar sobre sua empresa?
+                        </h2>
+                        <p class="text-center text-white/70 mb-8">
+                            Atendemos pequenas e médias empresas. Descreva sua
+                            necessidade e
+                            entraremos em contato.
+                        </p>
+
+                        <form id="contactForm"
+                            class="space-y-4 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg">
+                            <input type="text" name="name"
+                                placeholder="Seu nome" required
+                                class="input input-bordered w-full bg-black/40 text-white" />
+
+                            <input type="email" name="email"
+                                placeholder="Seu e-mail corporativo" required
+                                class="input input-bordered w-full bg-black/40 text-white" />
+
+                            <textarea name="message"
+                                placeholder="Descreva brevemente o cenário da sua empresa"
+                                required
+                                class="textarea textarea-bordered w-full bg-black/40 text-white"></textarea>
+
+                            <button type="submit"
+                                class="btn btn-info btn-lg w-full">
+                                Enviar e solicitar contato
+                            </button>
+
+                            <p id="formStatus"
+                                class="text-center text-sm mt-4"></p>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- FOOTER -->
+                <footer
+                    class="footer footer-center p-10 bg-transparent text-white/60">
+                    <aside>
+                        <p class="font-bold text-white">Serani</p>
+                        <p>© 2025 • Serani & Co</p>
+                    </aside>
+                </footer>
+
+            </div>
+        </div>
+
+        <!-- SCRIPT FORM -->
+        <script>
+  const form = document.getElementById("contactForm");
+  const status = document.getElementById("formStatus");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    status.textContent = "Enviando...";
+    status.className = "text-white/70";
+
+    emailjs.sendForm(
+      "service_87jw1ja",
+      "template_gllfxbm",
+      this
+    ).then(() => {
+      status.textContent = "Mensagem enviada com sucesso!";
+      status.className = "text-green-400";
+      form.reset();
+    }).catch(() => {
+      status.textContent = "Erro ao enviar. Tente novamente.";
+      status.className = "text-red-400";
+    });
+  });
+</script>
+
+        <!-- ANIMAÇÕES -->
+        <style>
+html { scroll-behavior: smooth; }
+
+@keyframes floatSlow {
+  0%,100% { transform: translate(0,0); }
+  50% { transform: translate(20px,-40px); }
+}
+.glow-float { animation: floatSlow 20s ease-in-out infinite; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 1.2s ease-out forwards; }
+
+.delay-1 { animation-delay: .2s; }
+.delay-2 { animation-delay: .4s; }
+.delay-3 { animation-delay: .6s; }
+
+.card {
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(76,60,255,.2);
+}
+
+.btn-info {
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  border: none;
+  color: #020617;
+}
+.btn-info:hover {
+  box-shadow: 0 0 30px rgba(14,165,233,.45);
+  transform: translateY(-2px);
+}
+
+.font-brand {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+</style>
+
+    </body>
+</html>
