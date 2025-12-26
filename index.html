@@ -1,47 +1,118 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Serani</title>
-
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
-
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
-            rel="stylesheet">
-
         <meta name="description"
-            content="Infraestrutura, segurança da informação e suporte técnico para empresas de pequeno e médio porte que precisam de estabilidade e segurança.">
+            content="Infraestrutura, segurança da informação e suporte técnico para pequenas e médias empresas.">
 
-        <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" />
-        <script
-            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link rel="icon" href="/favicon.png">
 
-        <!-- EmailJS -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-        <script>
-    (function () {
-      emailjs.init("BYiiAzi8w4LJN_HDb");
-    })();
-  </script>
+        <!-- Fonte não bloqueante -->
+        <link rel="preload"
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
+            as="style"
+            onload="this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap">
+        </noscript>
+
+        <!-- DaisyUI -->
+        <link rel="preload"
+            href="https://cdn.jsdelivr.net/npm/daisyui@5"
+            as="style"
+            onload="this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet"
+                href="https://cdn.jsdelivr.net/npm/daisyui@5">
+        </noscript>
+
+        <!-- Tailwind -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
+            defer></script>
+
+        <!-- CSS Base -->
+        <style>
+    html { scroll-behavior:smooth; }
+    body { background:#000; color:#fff; }
+    .font-brand {
+      font-family:'Plus Jakarta Sans',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
+    }
+  </style>
+
+        <!-- Animações otimizadas (mesmo visual) -->
+        <style>
+    @keyframes floatSlow {
+      0%,100% { transform:translate3d(0,0,0); }
+      50% { transform:translate3d(20px,-40px,0); }
+    }
+    .glow-float {
+      animation:floatSlow 20s ease-in-out infinite;
+      will-change:transform;
+    }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translate3d(0,40px,0); }
+      to { opacity:1; transform:translate3d(0,0,0); }
+    }
+    .fade-up {
+      opacity:0;
+      animation:fadeUp 1.2s ease-out forwards;
+      animation-play-state:paused;
+      will-change:opacity,transform;
+    }
+    .fade-up.is-visible { animation-play-state:running; }
+
+    .delay-1 { animation-delay:.2s; }
+    .delay-2 { animation-delay:.4s; }
+    .delay-3 { animation-delay:.6s; }
+
+    .card {
+      transition:transform .35s ease, box-shadow .35s ease;
+      will-change:transform;
+    }
+    .card:hover {
+      transform:translate3d(0,-8px,0);
+      box-shadow:0 20px 60px rgba(76,60,255,.2);
+    }
+
+    .btn-info {
+      background:linear-gradient(135deg,#0ea5e9,#38bdf8);
+      border:none;
+      color:#020617;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .btn-info:hover {
+      transform:translate3d(0,-2px,0);
+      box-shadow:0 0 30px rgba(14,165,233,.45);
+    }
+
+    .blur-delay {
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      opacity:0;
+      animation:blurIn .6s ease forwards;
+      animation-delay:.2s;
+    }
+    @keyframes blurIn { to { opacity:1; } }
+
+    @media (prefers-reduced-motion:reduce) {
+      * { animation:none!important; transform:none!important; opacity:1!important; }
+    }
+  </style>
     </head>
 
     <body class="bg-black text-white">
 
-        <!-- NAVBAR -->
+        <!-- Navbar -->
         <div
             class="navbar fixed top-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
             <div class="navbar-start">
-                <a href="#" class="font-brand text-xl font-extrabold">Serani</a>
+                <a class="font-brand text-xl font-extrabold">Serani</a>
             </div>
-
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal gap-6 text-white/80">
                     <li><a href="#servicos">Serviços</a></li>
@@ -49,19 +120,17 @@
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </div>
-
             <div class="navbar-end">
-                <a href="#contato" class="btn btn-info btn-sm">
-                    Fale com um especialista
-                </a>
+                <a href="#contato" class="btn btn-info btn-sm">Fale com um
+                    especialista</a>
             </div>
         </div>
 
-        <!-- BACKGROUND -->
+        <!-- Background -->
         <div
             class="relative overflow-hidden bg-gradient-to-br from-[#050b1e] via-[#0a1233] to-[#1a1f4a]">
 
-            <!-- GLOWS -->
+            <!-- Glows -->
             <div
                 class="absolute -top-40 -left-40 w-[700px] h-[700px] bg-[#4c3cff]/20 rounded-full blur-3xl glow-float"></div>
             <div
@@ -69,29 +138,25 @@
             <div
                 class="absolute bottom-0 left-1/4 w-[800px] h-[400px] bg-black/40 rounded-full blur-3xl glow-float delay-3"></div>
 
-            <div class="absolute inset-0 bg-black/30 backdrop-blur-md"></div>
+            <div
+                class="absolute inset-0 bg-black/30 backdrop-blur-md blur-delay"></div>
 
             <div class="relative z-10">
 
-                <!-- HERO -->
+                <!-- Hero -->
                 <section
                     class="min-h-screen flex items-center justify-center text-center px-6">
                     <div class="max-w-xl fade-up">
                         <h1
-                            class="font-brand text-7xl md:text-8xl font-black tracking-tight">
-                            Serani
-                        </h1>
-
+                            class="font-brand text-7xl md:text-8xl font-black">Serani</h1>
                         <p class="text-lg text-white/80 mb-8">
                             Tecnologia da informação para empresas de pequeno e
-                            médio porte que
-                            precisam de estabilidade, segurança e continuidade
-                            operacional.
+                            médio porte.
                         </p>
                         <div class="flex gap-4 justify-center">
-                            <a href="#contato" class="btn btn-info btn-lg">
-                                Solicitar contato
-                            </a>
+                            <a href="#contato"
+                                class="btn btn-info btn-lg">Solicitar
+                                contato</a>
                             <a href="#servicos"
                                 class="btn btn-outline btn-lg text-white border-white/30 hover:bg-white/10">
                                 Ver serviços
@@ -100,7 +165,7 @@
                     </div>
                 </section>
 
-                <!-- SERVIÇOS -->
+                <!-- Serviços -->
                 <section id="servicos" class="py-32">
                     <div class="max-w-6xl mx-auto px-6">
                         <h2 class="text-4xl font-bold text-center mb-16">
@@ -113,45 +178,40 @@
                                 class="card bg-white/5 backdrop-blur-lg border border-white/10 fade-up">
                                 <div class="card-body">
                                     <h3 class="card-title">Infraestrutura</h3>
-                                    <p class="text-white/70">
-                                        Redes, servidores e cloud estruturados
+                                    <p class="text-white/70">Redes, servidores e
+                                        cloud estruturados
                                         para garantir
                                         desempenho, disponibilidade e
-                                        crescimento seguro.
-                                    </p>
+                                        crescimento seguro.</p>
                                 </div>
                             </div>
 
                             <div
                                 class="card bg-white/5 backdrop-blur-lg border border-white/10 fade-up delay-1">
                                 <div class="card-body">
-                                    <h3 class="card-title">Segurança da
-                                        Informação</h3>
-                                    <p class="text-white/70">
-                                        Proteção contra ataques, vazamento de
+                                    <h3 class="card-title">Segurança</h3>
+                                    <p class="text-white/70">Proteção contra
+                                        ataques, vazamento de
                                         dados, ransomware,
-                                        backups e conformidade com a LGPD.
-                                    </p>
+                                        backups e conformidade com a LGPD.</p>
                                 </div>
                             </div>
 
                             <div
                                 class="card bg-white/5 backdrop-blur-lg border border-white/10 fade-up delay-2">
                                 <div class="card-body">
-                                    <h3 class="card-title">Suporte Técnico</h3>
-                                    <p class="text-white/70">
-                                        Suporte técnico contínuo para pequenas e
-                                        médias empresas,
+                                    <h3 class="card-title">Suporte</h3>
+                                    <p class="text-white/70">Suporte técnico
+                                        contínuo
                                         com atendimento rápido, claro e sem
-                                        burocracia.
-                                    </p>
+                                        burocracia.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- DIFERENCIAIS -->
+                <!-- Diferenciais -->
                 <section class="py-32">
                     <div
                         class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
@@ -190,11 +250,11 @@
                     </div>
                 </section>
 
-                <!-- SOBRE -->
+                <!-- Sobre -->
                 <section id="sobre" class="py-32">
                     <div class="max-w-4xl mx-auto px-6 text-center fade-up">
                         <h2 class="text-4xl font-bold mb-6">Sobre a Serani</h2>
-                        <p class="text-white/70 leading-relaxed">
+                        <p class="text-white/70">
                             A Serani atende empresas de pequeno e médio porte
                             que não podem parar.
                             Nosso foco é entregar infraestrutura de tecnologia
@@ -206,12 +266,11 @@
                     </div>
                 </section>
 
-                <!-- CONTATO -->
+                <!-- Contato -->
                 <section id="contato" class="py-32">
                     <div class="max-w-xl mx-auto px-6 fade-up">
-                        <h2 class="text-4xl font-bold text-center mb-4">
-                            Vamos falar sobre sua empresa?
-                        </h2>
+                        <h2 class="text-4xl font-bold text-center mb-4">Vamos
+                            falar sobre sua empresa?</h2>
                         <p class="text-center text-white/70 mb-8">
                             Atendemos pequenas e médias empresas. Descreva sua
                             necessidade e
@@ -220,31 +279,23 @@
 
                         <form id="contactForm"
                             class="space-y-4 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg">
-                            <input type="text" name="name"
-                                placeholder="Seu nome" required
-                                class="input input-bordered w-full bg-black/40 text-white" />
-
+                            <input type="text" name="name" placeholder="Nome"
+                                required
+                                class="input input-bordered w-full bg-black/40 text-white">
                             <input type="email" name="email"
-                                placeholder="Seu e-mail corporativo" required
-                                class="input input-bordered w-full bg-black/40 text-white" />
-
-                            <textarea name="message"
-                                placeholder="Descreva brevemente o cenário da sua empresa"
+                                placeholder="E-mail" required
+                                class="input input-bordered w-full bg-black/40 text-white">
+                            <textarea name="message" placeholder="Mensagem"
                                 required
                                 class="textarea textarea-bordered w-full bg-black/40 text-white"></textarea>
-
-                            <button type="submit"
-                                class="btn btn-info btn-lg w-full">
-                                Enviar e solicitar contato
-                            </button>
-
-                            <p id="formStatus"
-                                class="text-center text-sm mt-4"></p>
+                            <button
+                                class="btn btn-info btn-lg w-full">Enviar</button>
+                            <p id="formStatus" class="text-center text-sm"></p>
                         </form>
                     </div>
                 </section>
 
-                <!-- FOOTER -->
+                <!-- Footer -->
                 <footer
                     class="footer footer-center p-10 bg-transparent text-white/60">
                     <aside>
@@ -256,74 +307,45 @@
             </div>
         </div>
 
-        <!-- SCRIPT FORM -->
+        <!-- EmailJS -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
         <script>
+  emailjs.init("YOUR_PUBLIC_KEY");
+
   const form = document.getElementById("contactForm");
   const status = document.getElementById("formStatus");
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", e => {
     e.preventDefault();
-
     status.textContent = "Enviando...";
-    status.className = "text-white/70";
 
-    emailjs.sendForm(
-      "service_87jw1ja",
-      "template_gllfxbm",
-      this
-    ).then(() => {
-      status.textContent = "Mensagem enviada com sucesso!";
-      status.className = "text-green-400";
-      form.reset();
-    }).catch(() => {
-      status.textContent = "Erro ao enviar. Tente novamente.";
-      status.className = "text-red-400";
-    });
+    emailjs.sendForm("SERVICE_ID","TEMPLATE_ID",form)
+      .then(() => {
+        status.textContent = "Mensagem enviada com sucesso!";
+        status.className = "text-green-400";
+        form.reset();
+      })
+      .catch(() => {
+        status.textContent = "Erro ao enviar.";
+        status.className = "text-red-400";
+      });
   });
 </script>
 
-        <!-- ANIMAÇÕES -->
-        <style>
-html { scroll-behavior: smooth; }
+        <!-- Observer -->
+        <script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add("is-visible");
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold:0.15 });
 
-@keyframes floatSlow {
-  0%,100% { transform: translate(0,0); }
-  50% { transform: translate(20px,-40px); }
-}
-.glow-float { animation: floatSlow 20s ease-in-out infinite; }
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade-up { animation: fadeUp 1.2s ease-out forwards; }
-
-.delay-1 { animation-delay: .2s; }
-.delay-2 { animation-delay: .4s; }
-.delay-3 { animation-delay: .6s; }
-
-.card {
-  transition: transform .4s ease, box-shadow .4s ease;
-}
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(76,60,255,.2);
-}
-
-.btn-info {
-  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
-  border: none;
-  color: #020617;
-}
-.btn-info:hover {
-  box-shadow: 0 0 30px rgba(14,165,233,.45);
-  transform: translateY(-2px);
-}
-
-.font-brand {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-}
-</style>
+  document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+</script>
 
     </body>
 </html>
