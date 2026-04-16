@@ -1,344 +1,367 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-BR" class="scroll-smooth">
 
-        <title>Serani</title>
-        <meta name="description"
-            content="Infraestrutura, segurança da informação e suporte técnico para pequenas e médias empresas.">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" href="/favicon.png">
+    <title>Serani | Tech Excellence & Cyber Security</title>
+    <meta name="description" content="Infraestrutura de alta performance e segurança ofensiva para empresas que exigem continuidade absoluta.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
-        <!-- Fonte não bloqueante -->
-        <link rel="preload"
-            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap"
-            as="style"
-            onload="this.rel='stylesheet'">
-        <noscript>
-            <link rel="stylesheet"
-                href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap">
-        </noscript>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-        <!-- Tailwind -->
-        <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --brand-primary: #3b82f6;
+            --brand-secondary: #6366f1;
+            --bg-dark: #030408;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #f3f4f6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Spotlight Effect */
+        .spotlight {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle 400px at var(--x) var(--y), rgba(59, 130, 246, 0.12), transparent 80%);
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            border-color: var(--brand-primary);
+            background: rgba(59, 130, 246, 0.05);
+            transform: translateY(-8px);
+        }
+
+        .btn-premium {
+            position: relative;
+            background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary));
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-premium:hover::before {
+            left: 100%;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .step-number {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+            color: transparent;
+            font-size: 5rem;
+            line-height: 1;
+        }
+
+        .ticker-wrapper {
+            display: flex;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .ticker-content {
+            display: flex;
+            animation: ticker 30s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="spotlight" id="spotlight"></div>
+
+<nav class="fixed top-0 w-full z-[100] border-b border-white/5 backdrop-blur-xl bg-black/40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center font-bold text-white text-sm">S</div>
+            <span class="text-xl font-extrabold tracking-tighter">SERANI</span>
+        </div>
+        <div class="hidden lg:flex gap-8 text-sm font-medium text-white/70">
+            <a href="#solucoes" class="hover:text-white transition">Soluções</a>
+            <a href="#metodo" class="hover:text-white transition">Método</a>
+            <a href="#cases" class="hover:text-white transition">Cases</a>
+            <a href="#contato" class="hover:text-white transition">Contato</a>
+        </div>
+        <a href="#contato" class="btn-premium px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/20">
+            Agendar Diagnóstico
+        </a>
+    </div>
+</nav>
+
+<main class="relative pt-44 pb-20 px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+        <div class="reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8">
+                <div class="pulse-dot"></div>
+                <span class="text-xs font-semibold uppercase tracking-widest text-blue-400">Monitoramento Ativo 24/7</span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-black mb-8 leading-[0.85] tracking-tight">
+                Infraestrutura que <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">não recua.</span>
+            </h1>
+            <p class="text-xl text-white/50 max-w-lg mb-12 leading-relaxed">
+                Eliminamos gargalos tecnológicos e blindamos sua operação digital com engenharia resiliente e suporte de nível executivo.
+            </p>
+            <div class="flex flex-wrap gap-5">
+                <a href="#contato" class="btn-premium px-10 py-5 rounded-2xl font-extrabold shadow-2xl">Iniciar Consultoria</a>
+                <div class="flex items-center gap-4 px-6 py-4 rounded-2xl border border-white/10">
+                    <span class="text-sm font-bold text-white/80">Disponibilidade Garantida 99.9%</span>
+                </div>
+            </div>
+        </div>
         
-        <!-- DaisyUI -->
-        <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/daisyui@5">
-
-        <!-- CSS Base -->
-        <style>
-    html { scroll-behavior:smooth; }
-    body { background:#000; color:#fff; }
-    .font-brand {
-      font-family:'Plus Jakarta Sans',system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
-    }
-  </style>
-
-        <!-- Animações otimizadas (mesmo visual) -->
-        <style>
-    @keyframes floatSlow {
-      0%,100% { transform:translate3d(0,0,0); }
-      50% { transform:translate3d(20px,-40px,0); }
-    }
-    .glow-float {
-      animation:floatSlow 20s ease-in-out infinite;
-      will-change:transform;
-    }
-
-    @keyframes fadeUp {
-      from { opacity:0; transform:translate3d(0,40px,0); }
-      to { opacity:1; transform:translate3d(0,0,0); }
-    }
-    .fade-up {
-      opacity:0;
-      animation:fadeUp 1.2s ease-out forwards;
-      animation-play-state:paused;
-      will-change:opacity,transform;
-    }
-    .fade-up.is-visible { animation-play-state:running; }
-
-    .delay-1 { animation-delay:.2s; }
-    .delay-2 { animation-delay:.4s; }
-    .delay-3 { animation-delay:.6s; }
-
-    .card {
-      transition:transform .35s ease, box-shadow .35s ease;
-      will-change:transform;
-    }
-    .card:hover {
-      transform:translate3d(0,-8px,0);
-      box-shadow:0 20px 60px rgba(76,60,255,.2);
-    }
-
-    .btn-info {
-      background:linear-gradient(135deg,#0ea5e9,#38bdf8);
-      border:none;
-      color:#020617;
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .btn-info:hover {
-      transform:translate3d(0,-2px,0);
-      box-shadow:0 0 30px rgba(14,165,233,.45);
-    }
-
-    .blur-delay {
-      backdrop-filter:blur(12px);
-      -webkit-backdrop-filter:blur(12px);
-      opacity:0;
-      animation:blurIn .6s ease forwards;
-      animation-delay:.2s;
-    }
-    @keyframes blurIn { to { opacity:1; } }
-
-    @media (prefers-reduced-motion:reduce) {
-      * { animation:none!important; transform:none!important; opacity:1!important; }
-    }
-  </style>
-    </head>
-
-    <body class="bg-black text-white">
-
-        <!-- Navbar -->
-        <div
-            class="navbar fixed top-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
-            <div class="navbar-start">
-                <a class="font-brand text-xl font-extrabold">Serani</a>
-            </div>
-            <div class="navbar-center hidden lg:flex">
-                <ul class="menu menu-horizontal gap-6 text-white/80">
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </div>
-            <div class="navbar-end">
-                <a href="#contato" class="btn btn-info btn-sm">Fale com um
-                    especialista</a>
+        <div class="relative reveal">
+            <div class="glass-card p-8 rounded-[40px] border-blue-500/20">
+                <div class="flex justify-between items-center mb-8 border-b border-white/10 pb-4">
+                    <span class="text-xs font-mono text-blue-400 uppercase tracking-widest">Global Ops Status</span>
+                    <span class="text-xs font-mono text-green-500">LIVE</span>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-xs mb-2">
+                            <span>SÃO PAULO DC-01</span>
+                            <span class="text-blue-400">OPTIMAL</span>
+                        </div>
+                        <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-500 w-[98%]"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-2">
+                            <span>FIREWALL LATENCY</span>
+                            <span class="text-blue-400">4ms</span>
+                        </div>
+                        <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-indigo-500 w-[100%]"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs mb-2">
+                            <span>THREAT PROTECTION</span>
+                            <span class="text-blue-400">ACTIVE</span>
+                        </div>
+                        <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                            <div class="h-full bg-cyan-500 w-[95%]"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    <div class="bg-white/5 p-4 rounded-2xl text-center">
+                        <p class="text-2xl font-bold">15m</p>
+                        <p class="text-[10px] uppercase text-white/40 tracking-widest">Avg Response</p>
+                    </div>
+                    <div class="bg-white/5 p-4 rounded-2xl text-center">
+                        <p class="text-2xl font-bold">128</p>
+                        <p class="text-[10px] uppercase text-white/40 tracking-widest">Active nodes</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+</main>
 
-        <!-- Background -->
-        <div
-            class="relative overflow-hidden bg-gradient-to-br from-[#050b1e] via-[#0a1233] to-[#1a1f4a]">
+<section class="py-12 border-y border-white/5 bg-white/[0.01]">
+    <div class="ticker-wrapper">
+        <div class="ticker-content gap-20 px-10">
+            <span class="text-2xl font-black opacity-20 uppercase italic tracking-tighter">Fintech Solutions</span>
+            <span class="text-2xl font-black opacity-20 uppercase italic tracking-tighter">Global Logistics</span>
+            <span class="text-2xl font-black opacity-20 uppercase italic tracking-tighter">Health Care Group</span>
+            <span class="text-2xl font-black opacity-20 uppercase italic tracking-tighter">Tech Industries</span>
+            <span class="text-2xl font-black opacity-20 uppercase italic tracking-tighter">E-com Global</span>
+            <span class="text-2xl font-black opacity-20 uppercase italic tracking-tighter">Fintech Solutions</span>
+            <span class="text-2xl font-black opacity-20 uppercase italic tracking-tighter">Global Logistics</span>
+            <span class="text-2xl font-black opacity-20 uppercase italic tracking-tighter">Health Care Group</span>
+        </div>
+    </div>
+</section>
 
-            <!-- Glows -->
-            <div
-                class="absolute -top-40 -left-40 w-[700px] h-[700px] bg-[#4c3cff]/20 rounded-full blur-3xl glow-float"></div>
-            <div
-                class="absolute top-1/3 -right-40 w-[600px] h-[600px] bg-blue-900/30 rounded-full blur-3xl glow-float delay-2"></div>
-            <div
-                class="absolute bottom-0 left-1/4 w-[800px] h-[400px] bg-black/40 rounded-full blur-3xl glow-float delay-3"></div>
-
-            <div
-                class="absolute inset-0 bg-black/30 backdrop-blur-md blur-delay"></div>
-
-            <div class="relative z-10">
-
-                <!-- Hero -->
-                <section
-                    class="min-h-screen flex items-center justify-center text-center px-6">
-                    <div class="max-w-xl fade-up">
-                        <h1
-                            class="font-brand text-7xl md:text-8xl font-black">Serani</h1>
-                        <p class="text-lg text-white/80 mb-8">
-                            Tecnologia da informação para empresas de pequeno e
-                            médio porte.
-                        </p>
-                        <div class="flex gap-4 justify-center">
-                            <a href="#contato"
-                                class="btn btn-info btn-lg">Solicitar
-                                contato</a>
-                            <a href="#servicos"
-                                class="btn btn-outline btn-lg text-white border-white/30 hover:bg-white/10">
-                                Ver serviços
-                            </a>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Serviços -->
-                <section id="servicos" class="py-32">
-                    <div class="max-w-6xl mx-auto px-6">
-                        <h2 class="text-4xl font-bold text-center mb-16">
-                            Soluções em tecnologia da informação para pequenas e
-                            médias empresas
-                        </h2>
-
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <div
-                                class="card bg-white/5 backdrop-blur-lg border border-white/10 fade-up">
-                                <div class="card-body">
-                                    <h3 class="card-title">Infraestrutura</h3>
-                                    <p class="text-white/70">Redes, servidores e
-                                        cloud estruturados
-                                        para garantir
-                                        desempenho, disponibilidade e
-                                        crescimento seguro.</p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="card bg-white/5 backdrop-blur-lg border border-white/10 fade-up delay-1">
-                                <div class="card-body">
-                                    <h3 class="card-title">Segurança</h3>
-                                    <p class="text-white/70">Proteção contra
-                                        ataques, vazamento de
-                                        dados, ransomware,
-                                        backups e conformidade com a LGPD.</p>
-                                </div>
-                            </div>
-
-                            <div
-                                class="card bg-white/5 backdrop-blur-lg border border-white/10 fade-up delay-2">
-                                <div class="card-body">
-                                    <h3 class="card-title">Suporte</h3>
-                                    <p class="text-white/70">Suporte técnico
-                                        contínuo
-                                        com atendimento rápido, claro e sem
-                                        burocracia.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Diferenciais -->
-                <section class="py-32">
-                    <div
-                        class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-                        <div class="fade-up">
-                            <h2 class="text-4xl font-bold mb-6">
-                                Tecnologia da informação pensada para pequenas e
-                                médias empresas
-                            </h2>
-                            <ul class="space-y-4 text-white/80">
-                                <li>Ambientes estáveis e monitorados</li>
-                                <li>Segurança aplicada desde o início</li>
-                                <li>Soluções escaláveis conforme o
-                                    crescimento</li>
-                                <li>Relacionamento próximo e transparente</li>
-                            </ul>
-                        </div>
-
-                        <div class="relative fade-up delay-2">
-                            <div
-                                class="absolute inset-0 bg-[#4c3cff]/20 blur-3xl rounded-full"></div>
-                            <div
-                                class="relative card bg-white/5 backdrop-blur-lg border border-white/10">
-                                <div class="card-body">
-                                    <h3 class="text-xl font-semibold">
-                                        Tecnologia que sustenta o seu negócio
-                                    </h3>
-                                    <p class="text-white/70">
-                                        Cuidamos da tecnologia para que pequenas
-                                        e médias empresas
-                                        possam crescer com segurança,
-                                        previsibilidade e controle.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Sobre -->
-                <section id="sobre" class="py-32">
-                    <div class="max-w-4xl mx-auto px-6 text-center fade-up">
-                        <h2 class="text-4xl font-bold mb-6">Sobre a Serani</h2>
-                        <p class="text-white/70">
-                            A Serani atende empresas de pequeno e médio porte
-                            que não podem parar.
-                            Nosso foco é entregar infraestrutura de tecnologia
-                            da informação estável, segurança da
-                            informação e suporte técnico confiável, sem
-                            improviso e sem soluções
-                            genéricas.
-                        </p>
-                    </div>
-                </section>
-
-                <!-- Contato -->
-                <section id="contato" class="py-32">
-                    <div class="max-w-xl mx-auto px-6 fade-up">
-                        <h2 class="text-4xl font-bold text-center mb-4">Vamos
-                            falar sobre sua empresa?</h2>
-                        <p class="text-center text-white/70 mb-8">
-                            Atendemos pequenas e médias empresas. Descreva sua
-                            necessidade e
-                            entraremos em contato.
-                        </p>
-
-                        <form id="contactForm"
-                            class="space-y-4 bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-lg">
-                            <input type="text" name="name" placeholder="Nome"
-                                required
-                                class="input input-bordered w-full bg-black/40 text-white">
-                            <input type="email" name="email"
-                                placeholder="E-mail" required
-                                class="input input-bordered w-full bg-black/40 text-white">
-                            <textarea name="message" placeholder="Mensagem"
-                                required
-                                class="textarea textarea-bordered w-full bg-black/40 text-white"></textarea>
-                            <button
-                                class="btn btn-info btn-lg w-full">Enviar</button>
-                            <p id="formStatus" class="text-center text-sm"></p>
-                        </form>
-                    </div>
-                </section>
-
-                <!-- Footer -->
-                <footer
-                    class="footer footer-center p-10 bg-transparent text-white/60">
-                    <aside>
-                        <p class="font-bold text-white">Serani</p>
-                        <p>© 2025 • Serani</p>
-                    </aside>
-                </footer>
-
-            </div>
+<section id="solucoes" class="py-32 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20 reveal">
+            <h2 class="text-4xl md:text-5xl font-black mb-6">Nossa Engenharia de Elite</h2>
+            <p class="text-white/50 max-w-2xl mx-auto">Soluções desenhadas para empresas onde 1 minuto fora do ar representa milhões em prejuízo.</p>
         </div>
 
-        <!-- EmailJS -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-        <script>
-  emailjs.init("BYiiAzi8w4LJN_HDb");
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass-card p-12 rounded-[40px] reveal">
+                <div class="text-blue-500 mb-8">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Cyber Defense</h3>
+                <p class="text-white/50 leading-relaxed">Proteção ofensiva e preventiva. Blindamos sua rede contra Ransomware e invasões sofisticadas.</p>
+            </div>
 
-  const form = document.getElementById("contactForm");
-  const status = document.getElementById("formStatus");
+            <div class="glass-card p-12 rounded-[40px] reveal border-blue-500/20">
+                <div class="text-indigo-500 mb-8">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Hybrid Cloud</h3>
+                <p class="text-white/50 leading-relaxed">Orquestração de nuvem focada em performance e redução drástica de custos operacionais.</p>
+            </div>
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    status.textContent = "Enviando...";
+            <div class="glass-card p-12 rounded-[40px] reveal">
+                <div class="text-cyan-500 mb-8">
+                    <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Gerencimento de Patch e Vulnerabilidades</h3>
+                <p class="text-white/50 leading-relaxed">Monitoramento inteligente que antecipa falhas antes mesmo de elas afetarem o usuário final.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    emailjs.sendForm("service_6g7tuob","template_gllfxbm",form)
-      .then(() => {
-        status.textContent = "Mensagem enviada com sucesso!";
-        status.className = "text-green-400";
-        form.reset();
-      })
-      .catch(() => {
-        status.textContent = "Erro ao enviar.";
-        status.className = "text-red-400";
-      });
-  });
-</script>
+<section id="metodo" class="py-32 px-6 bg-white/[0.02]">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-24 reveal">
+            <h2 class="text-4xl md:text-5xl font-black mb-6">O Caminho da Resiliência</h2>
+            <p class="text-white/50 max-w-2xl mx-auto">Transparência total em cada etapa da nossa consultoria.</p>
+        </div>
 
-        <!-- Observer -->
-        <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add("is-visible");
-        observer.unobserve(e.target);
-      }
+        <div class="grid md:grid-cols-4 gap-4">
+            <div class="relative p-8 reveal">
+                <span class="step-number">01</span>
+                <h4 class="text-xl font-bold mt-4 mb-2">Diagnóstico</h4>
+                <p class="text-sm text-white/40">Auditamos vulnerabilidades e gargalos em toda a sua malha digital.</p>
+            </div>
+            <div class="relative p-8 reveal">
+                <span class="step-number">02</span>
+                <h4 class="text-xl font-bold mt-4 mb-2">Arquitetura</h4>
+                <p class="text-sm text-white/40">Desenhamos a infraestrutura ideal focada em segurança e escala.</p>
+            </div>
+            <div class="relative p-8 reveal">
+                <span class="step-number">03</span>
+                <h4 class="text-xl font-bold mt-4 mb-2">Deployment</h4>
+                <p class="text-sm text-white/40">Implementação ágil com impacto zero na sua operação atual.</p>
+            </div>
+            <div class="relative p-8 reveal">
+                <span class="step-number">04</span>
+                <h4 class="text-xl font-bold mt-4 mb-2">Gestão</h4>
+                <p class="text-sm text-white/40">Governança contínua e suporte proativo de nível especialista.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="py-32 px-6">
+    <div class="max-w-3xl mx-auto">
+        <h2 class="text-4xl font-black mb-16 text-center reveal">Consultoria Exclusiva</h2>
+        <div class="space-y-6">
+            <div class="glass-card p-8 rounded-3xl reveal">
+                <h4 class="text-lg font-bold mb-3 text-white">Qual o SLA de atendimento?</h4>
+                <p class="text-white/50 leading-relaxed">Trabalhamos com tempo de resposta de até 15 minutos para incidentes críticos de nível 1.</p>
+            </div>
+            <div class="glass-card p-8 rounded-3xl reveal">
+                <h4 class="text-lg font-bold mb-3 text-white">Qual o porte da empresa que a Serani atende?</h4>
+                <p class="text-white/50 leading-relaxed">Nosso foco principal é oferecer facilidade na gestão para pequenas e médias empresas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contato" class="py-32 px-6">
+    <div class="max-w-6xl mx-auto glass-card p-12 md:p-20 rounded-[60px] relative overflow-hidden reveal">
+        <div class="grid md:grid-cols-2 gap-16 relative z-10">
+            <div>
+                <h2 class="text-5xl font-black mb-8">Blindar minha empresa <span class="text-blue-500">agora.</span></h2>
+                <p class="text-white/50 text-lg mb-12">Fale diretamente com um consultor técnico e receba um diagnóstico preliminar da sua infraestrutura.</p>
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-blue-400 font-bold italic">@</div>
+                        <p class="font-bold">contato@serani.com.br</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="space-y-4">
+                <input type="text" placeholder="Nome completo" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:outline-none focus:border-blue-500 transition text-white">
+                <input type="email" placeholder="E-mail Corporativo" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:outline-none focus:border-blue-500 transition text-white">
+                <textarea placeholder="Como está sua infra hoje?" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl h-32 focus:outline-none focus:border-blue-500 transition text-white"></textarea>
+                <button class="w-full btn-premium py-5 rounded-2xl font-black text-lg uppercase tracking-wider">Agendar Diagnóstico Gratuito</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<footer class="py-20 border-t border-white/5">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <p class="text-white/20 text-xs font-medium tracking-widest uppercase">© 2026 SERANI TECH EXCELLENCE. Engenharia de TI para Missão Crítica.</p>
+    </div>
+</footer>
+
+<script>
+    // Spotlight Effect logic
+    const spotlight = document.getElementById('spotlight');
+    window.addEventListener('mousemove', e => {
+        spotlight.style.setProperty('--x', e.clientX + 'px');
+        spotlight.style.setProperty('--y', e.clientY + 'px');
     });
-  }, { threshold:0.15 });
 
-  document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+    // Reveal Animation
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 
-    </body>
+</body>
 </html>
